@@ -1502,6 +1502,7 @@ body.votegold .brand .sticker b{color:#1B1B18!important}
 .rmo .vmc{width:min(960px,100%)}
 .rpl{margin:26px 0 10px}
 .rpl video,.rpl .rcph.big{display:block;width:100%;aspect-ratio:1800/990;background:#000;border-radius:4px}
+.rpl.vert{display:flex;justify-content:center}.rpl.vert video{width:auto;max-width:100%;height:min(76vh,720px);aspect-ratio:9/16}.rmo .vmc:has(.rpl.vert){width:min(520px,100%)}
 .rpl .rcph.big{background:linear-gradient(135deg,#A63A35,#6E1B25);position:relative}
 .rpl .rcph.big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media (prefers-reduced-motion:reduce){.rc{transition:none}}
@@ -3290,7 +3291,7 @@ function vMoreHTML(){
 }
 function vMore(){VMORE+=3;var el=$('#vmb');if(el)el.innerHTML=vMoreHTML()}
 /* ---- v161 endorsements: landscape album covers (videos + cover photos are added to REC; nothing shows until REC has entries; ?rec=1 previews placeholders) ---- */
-var REC=[{who:'前總統',nm:'蔡英文',img:'photos/rec-1.jpg',vid:'videos/rec-1.mp4'},{who:'副總統',nm:'蕭美琴',img:'photos/rec-2.jpg',vid:'videos/rec-2.mp4'},{who:'行政院秘書長',nm:'張惇涵',img:'photos/rec-3.jpg',vid:'videos/rec-3.mp4'},{who:'前行政院長',nm:'游錫堃',img:'photos/rec-4b.jpg',vid:'videos/rec-4.mp4'}/* vid:'videos/rec-N.mp4' is added when the video arrives; a card only goes public once it has vid */];
+var REC=[{who:'總統',nm:'賴清德',img:'photos/rec-5.jpg',vid:'videos/rec-5.mp4',vert:1},{who:'副總統',nm:'蕭美琴',img:'photos/rec-2.jpg',vid:'videos/rec-2.mp4'},{who:'前總統',nm:'蔡英文',img:'photos/rec-1.jpg',vid:'videos/rec-1.mp4'},{who:'前行政院長',nm:'游錫堃',img:'photos/rec-4b.jpg',vid:'videos/rec-4.mp4'},{who:'行政院秘書長',nm:'張惇涵',img:'photos/rec-3.jpg',vid:'videos/rec-3.mp4'}];
 var RECPV=/[?&]rec=1/.test(location.search);
 var RECL=REC;
 function recSection(){
@@ -3304,7 +3305,7 @@ function openRec(i){
   var r=RECL[i];if(!r)return;stopVids();closeVid();
   var pl=r.vid?'<video controls autoplay playsinline src="'+esc(r.vid)+'"'+(r.img?' poster="'+esc(r.img)+'"':'')+'></video>':'<div class="rcph big">'+(r.img?'<img src="'+esc(r.img)+'" alt="">':'')+'</div>';
   var m=document.createElement('div');m.className='vmo rmo';m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');m.setAttribute('aria-label',r.who+' '+r.nm+'推薦林國漳');
-  m.innerHTML='<div class="vmc"><button type="button" class="vmx" aria-label="關閉">×</button><div class="rpl">'+pl+'</div><h3>'+esc(r.who+' '+r.nm)+'　推薦林國漳</h3></div>';
+  m.innerHTML='<div class="vmc"><button type="button" class="vmx" aria-label="關閉">×</button><div class="rpl'+(r.vert?' vert':'')+'">'+pl+'</div><h3>'+esc(r.who+' '+r.nm)+'　推薦林國漳</h3></div>';
   m.addEventListener('click',function(e){if(e.target===m||e.target.closest('.vmx'))closeVid()});
   document.body.appendChild(m);document.body.style.overflow='hidden';VMO=m;
   var x=m.querySelector('.vmx');if(x&&x.focus)x.focus();
@@ -4008,7 +4009,7 @@ function drawWallCard(){
   return cv;
 }
 function openWallCard(){openImg(drawWallCard(),'宜蘭大歌廳排行榜｜宜蘭大歌廳①次看全部',(SHARE_BASE?SHARE_BASE+SQ:location.href.split('#')[0]),'宜蘭大歌廳-排行榜.png')}
-var BUILD='11/9 第 214 版';
+var BUILD='11/9 第 216 版';
 $('#mego').onclick=function(){albClose();openPersona()};
 $('#mecard').onclick=function(){albClose();openCard()};
 $('#mecl').onclick=function(){albClose();PS.jobs={};PS.towns={};panel()};
