@@ -1484,7 +1484,7 @@ body.votegold .brand .sticker b{color:#1B1B18!important}
 @media (prefers-reduced-motion:reduce){.disco,.disco .sp{animation:none!important}.disco .sp{opacity:.8}}
 /* v161 endorsement covers: landscape album sleeves */
 .recg{display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
-@media (min-width:700px){.recg{grid-template-columns:repeat(2,minmax(0,1fr))}.recg .rc:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 11px);justify-self:center}}
+@media (min-width:700px){.recg{grid-template-columns:repeat(2,minmax(0,1fr))}.recg .rc:first-child{grid-column:1/-1;width:calc(50% - 11px);justify-self:center}}
 .rc{position:relative;display:block;width:100%;padding:0;border:6px solid #E0C85C;border-radius:4px;background:#1B1B18;overflow:hidden;cursor:pointer;text-align:left;box-shadow:0 10px 24px rgba(27,27,24,.22);transition:transform .2s cubic-bezier(.4,0,.2,1)}
 .rc:hover,.rc:focus-visible{transform:translateY(-3px)}
 .rc:focus-visible{outline:3px solid #1B1B18;outline-offset:3px}
@@ -4009,7 +4009,7 @@ function drawWallCard(){
   return cv;
 }
 function openWallCard(){openImg(drawWallCard(),'宜蘭大歌廳排行榜｜宜蘭大歌廳①次看全部',(SHARE_BASE?SHARE_BASE+SQ:location.href.split('#')[0]),'宜蘭大歌廳-排行榜.png')}
-var BUILD='11/9 第 216 版';
+var BUILD='11/9 第 217 版';
 $('#mego').onclick=function(){albClose();openPersona()};
 $('#mecard').onclick=function(){albClose();openCard()};
 $('#mecl').onclick=function(){albClose();PS.jobs={};PS.towns={};panel()};
