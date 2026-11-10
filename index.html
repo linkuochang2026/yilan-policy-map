@@ -3554,8 +3554,7 @@ function drawFortune(daily,fid){
   ovOpen('<div class="fzt'+(reduce?'':' shake')+'">'+TUBE+'</div><p class="fzh">'+(reduce?'':'搖一搖…')+'</p>','fz');
   setTimeout(function(){
     if(tok!==FZ.tok||OV.hidden)return;
-    if(daily&&Math.floor((Date.now()+8*36e5)/864e5)%3===1){coldCard(coldToday(),'今日一籤　'+dayLabel()+'　這支籤有點冷','再抽一支');markDay();return}
-    if(!daily&&!fid&&Math.random()<.3){coldCard(coldPick(),'這支籤有點冷','再抽一支');return}
+    if(!fid&&coldDue()){coldCard(daily?coldToday():coldPick(),(daily?'今日一籤　'+dayLabel()+'　':'')+'這支籤有點冷','再抽一支');if(daily)markDay();return}
     var c=CATS[p.c],url=fzURL(p.id),po=fzPoem(p.id),gr=fzGrade(p.id);
     var h='<div class="fzc" style="--cc:'+c.c+'">'+(daily?'<div class="fzday">今日一籤　'+dayLabel()+'</div>':'')+'<div class="fzno"><span class="fzgr">'+gr+'</span>第<b>'+(i+1)+'</b>籤<small>共 '+cand.length+' 支</small></div>'+
       '<div class="fzpoem" aria-label="籤詩">'+po.map(function(l){return '<span>'+esc(l)+'</span>'}).join('')+'</div>'+
@@ -4009,7 +4008,7 @@ function drawWallCard(){
   return cv;
 }
 function openWallCard(){openImg(drawWallCard(),'宜蘭大歌廳排行榜｜宜蘭大歌廳①次看全部',(SHARE_BASE?SHARE_BASE+SQ:location.href.split('#')[0]),'宜蘭大歌廳-排行榜.png')}
-var BUILD='11/9 第 217 版';
+var BUILD='11/10 第 218 版';
 $('#mego').onclick=function(){albClose();openPersona()};
 $('#mecard').onclick=function(){albClose();openCard()};
 $('#mecl').onclick=function(){albClose();PS.jobs={};PS.towns={};panel()};
@@ -4046,6 +4045,7 @@ var COLD=[
  {q:'什麼球不能踢？',a:'地球。',c:'kids'}
 ];
 var COLDLAST=-1;
+function coldDue(){var n=0;try{n=+localStorage.getItem('yl-fcnt')||0}catch(e){n=FZ.cn||0}n++;try{localStorage.setItem('yl-fcnt',String(n))}catch(e){FZ.cn=n}return n%3===0}
 function coldToday(){var dn=Math.floor((Date.now()+8*36e5)/864e5);return dn%COLD.length}
 function coldPick(){var i;do{i=Math.floor(Math.random()*COLD.length)}while(COLD.length>1&&i===COLDLAST);return i}
 function coldCard(i,head,again,key){
