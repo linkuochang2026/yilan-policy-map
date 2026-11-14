@@ -3164,7 +3164,7 @@ function bioView(){
 function openBio(){S.sel={type:'bio'};setHL();refresh();homeView();window.scrollTo&&window.scrollTo({top:0})}
 
 /* ================= videos ================= */
-var VID_AS='11/13';
+var VID_AS='11/14';
 var VG=[
  ['new','最新','最近發布的 8 支。'],
  ['hot','熱門','觀看次數最高的 10 支。'],
@@ -3183,7 +3183,7 @@ var VGN={};VG.forEach(function(g){VGN[g[0]]=g[1]});
 /* [Facebook reel id, title, views at VID_AS, group, related policy ids]; newest first */
 var VID=[
  ['1377603664265004','《如果有國漳》張純淑談慈心華德福創辦經驗',16000,'friend',[]],
- ['1785401566075744','溪北競選總部成立',11000,'club',[]],
+ ['1785401566075744','溪北競選總部成立',12000,'club',[]],
  ['2185916185660865','《如果有國漳》許文政談國中同學林國漳',24000,'friend',[]],
  ['2347465906000867','《宜蘭的窗》直式版',19000,'about',['V01']],
  ['1587421089251376','《如果有國漳》包漢銘律師談縣府委員會經驗',17000,'friend',[]],
@@ -3198,7 +3198,7 @@ var VID=[
 ['1402119825325969','首支競選形象影片《宜蘭的窗》',82000,'about',['V01'],'h'],
  ['1402865411949340','中元普渡感恩月，祝大家平安順興',19000,'faith',[]],
  ['1553140946826715','完成宜蘭縣長候選人登記：11.28 一起贏回宜蘭的光榮',53000,'about',[]],
- ['1772911103741695','全民蓋「漳」：一起蓋漳宜蘭地圖',9182,'gai',[]],
+ ['1772911103741695','全民蓋「漳」：一起蓋漳宜蘭地圖',9183,'gai',[]],
  ['1960698871294160','蘭馨婦幼中心庇護工場',13000,'walk',['K01','W02']],
  ['2355649995175403','五十二甲濕地保育與私有土地解方',12000,'pol',['X13']],
  ['1998137587546509','與蕭美琴副總統走訪百大青農與宜蘭酒廠',16000,'farm',['A01']],
@@ -4008,7 +4008,7 @@ function drawWallCard(){
   return cv;
 }
 function openWallCard(){openImg(drawWallCard(),'宜蘭大歌廳排行榜｜宜蘭大歌廳①次看全部',(SHARE_BASE?SHARE_BASE+SQ:location.href.split('#')[0]),'宜蘭大歌廳-排行榜.png')}
-var BUILD='11/13 第 220 版';
+var BUILD='11/14 第 221 版';
 $('#mego').onclick=function(){albClose();openPersona()};
 $('#mecard').onclick=function(){albClose();openCard()};
 $('#mecl').onclick=function(){albClose();PS.jobs={};PS.towns={};panel()};
